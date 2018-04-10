@@ -1,5 +1,9 @@
 import pygame
 
+from utils import load_image
+from bases.game_objects import run_all, draw_all, add_game_object
+from player import Player
+
 
 SIZE = (600, 800)
 
@@ -11,6 +15,9 @@ screen = pygame.display.set_mode(SIZE)
 
 loop = True
 
+player = Player()
+add_game_object(player)
+
 # game loop
 while loop:
     
@@ -19,5 +26,10 @@ while loop:
         if event.type == pygame.QUIT:
             loop = False
     
+    screen.fill((255, 255, 255))
+
+    run_all()
+    draw_all(screen)
+
     clock.tick(60)
     pygame.display.flip()
