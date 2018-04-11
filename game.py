@@ -2,6 +2,7 @@ import pygame
 
 from utils import load_image
 from bases.game_objects import run_all, draw_all, add_game_object
+from input_manager import process_event, get_input_status
 from player import Player
 
 
@@ -25,7 +26,9 @@ while loop:
     for event in events:
         if event.type == pygame.QUIT:
             loop = False
-    
+        else:
+            process_event(event)
+
     screen.fill((255, 255, 255))
 
     run_all()
