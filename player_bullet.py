@@ -12,3 +12,8 @@ class PlayerBullet(GameObject):
     def run(self):
         GameObject.run(self)
         self.position.add_up2(self.velocity)
+        self.deactive()
+    
+    def deactive(self):
+        if self.position.y < 0:
+            self.active = False

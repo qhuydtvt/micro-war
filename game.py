@@ -3,7 +3,7 @@ import pygame
 from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 
 from utils import load_image
-from bases.game_objects import run_all, draw_all, add_game_object
+from bases.game_objects import run_all, draw_all, add_game_object, game_object_count
 from input_manager import process_event, get_input_status
 from player import Player
 
@@ -32,6 +32,8 @@ while loop:
             process_event(event)
 
     screen.fill((255, 255, 255))
+
+    print(game_object_count())
 
     run_all()
     draw_all(screen)

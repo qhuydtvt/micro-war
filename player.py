@@ -1,4 +1,4 @@
-from bases.game_objects import GameObject, add_game_object
+from bases.game_objects import GameObject, add_game_object, recycle
 from bases.renderers.image_renderer import ImageRenderer
 from utils import load_image
 from input_manager import get_input_status
@@ -46,8 +46,5 @@ class Player(GameObject):
     def shoot(self):
         input_status = get_input_status()
         if input_status.x_pressed:
-            bullet = PlayerBullet()
-            bullet.position.copy2(self.position)
-            add_game_object(bullet)
-
-        
+            bullet = recycle(PlayerBullet)
+            bullet.position.copy(self.position.x, self.position.y - 32)
