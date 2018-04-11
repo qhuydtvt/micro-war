@@ -1,8 +1,9 @@
-from bases.game_objects import GameObject
+from bases.game_objects import GameObject, add_game_object
 from bases.renderers.image_renderer import ImageRenderer
 from utils import load_image
 from input_manager import get_input_status
 from bases.vector2d import Vector2D
+from player_bullet import PlayerBullet
 
 from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 from bases.mathx import clamp
@@ -16,6 +17,7 @@ class Player(GameObject):
     def run(self):
         GameObject.run(self)
         self.move()
+        self.shoot()
 
     def move(self):
         self.velocity.x = 0
@@ -41,5 +43,11 @@ class Player(GameObject):
         self.position.x = clamp(self.position.x, 0, SCREEN_WIDTH)
         self.position.y = clamp(self.position.y, 0, SCREEN_HEIGHT)
 
+    def shoot(self):
+        input_status = get_input_status()
+        if input_status.x_pressed:
+            bullet = PlayerBullet()
+            bullet.position.copy2(self.position)
+            add_game_object(bullet)
 
         
