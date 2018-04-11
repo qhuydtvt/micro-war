@@ -33,8 +33,6 @@ while loop:
 
     screen.fill((255, 255, 255))
 
-    print(game_object_count())
-
     run_all()
     draw_all(screen)
 

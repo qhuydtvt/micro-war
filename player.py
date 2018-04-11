@@ -4,6 +4,7 @@ from utils import load_image
 from input_manager import get_input_status
 from bases.vector2d import Vector2D
 from player_bullet import PlayerBullet
+from bases.counter import Counter
 
 from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 from bases.mathx import clamp
@@ -13,6 +14,7 @@ class Player(GameObject):
         GameObject.__init__(self)
         self.renderer = ImageRenderer(load_image("player.png"))
         self.velocity = Vector2D(0, 0)
+        self.shoot_counter = Counter(7)
     
     def run(self):
         GameObject.run(self)
@@ -46,5 +48,8 @@ class Player(GameObject):
     def shoot(self):
         input_status = get_input_status()
         if input_status.x_pressed:
-            bullet = recycle(PlayerBullet)
-            bullet.position.copy(self.position.x, self.position.y - 32)
+            if self.shoot_counter.run():
+                self.shoot_counter.reset()
+                bullet = recycle(PlayerBullet)
+                bullet.position.copy(self.position.x, self.position.y - 32)
+            
