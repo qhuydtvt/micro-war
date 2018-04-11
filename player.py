@@ -12,6 +12,9 @@ class Player(GameObject):
     
     def run(self):
         GameObject.run(self)
+        self.move()
+
+    def move(self):
         self.velocity.x = 0
         self.velocity.y = 0
 
