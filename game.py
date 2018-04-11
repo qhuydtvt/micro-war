@@ -1,12 +1,14 @@
 import pygame
 
+from settings import SCREEN_WIDTH, SCREEN_HEIGHT
+
 from utils import load_image
 from bases.game_objects import run_all, draw_all, add_game_object
 from input_manager import process_event, get_input_status
 from player import Player
 
 
-SIZE = (600, 800)
+SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
 clock = pygame.time.Clock()
 

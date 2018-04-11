@@ -4,6 +4,9 @@ from utils import load_image
 from input_manager import get_input_status
 from bases.vector2d import Vector2D
 
+from settings import SCREEN_WIDTH, SCREEN_HEIGHT
+from bases.mathx import clamp
+
 class Player(GameObject):
     def __init__(self):
         GameObject.__init__(self)
@@ -34,4 +37,9 @@ class Player(GameObject):
         
         self.position.x += self.velocity.x
         self.position.y += self.velocity.y
+
+        self.position.x = clamp(self.position.x, 0, SCREEN_WIDTH)
+        self.position.y = clamp(self.position.y, 0, SCREEN_HEIGHT)
+
+
         
