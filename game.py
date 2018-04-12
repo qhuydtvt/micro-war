@@ -6,9 +6,7 @@ from utils import load_image
 from bases.game_objects import run_all, draw_all, add_game_object, game_object_count
 from input_manager import process_event, get_input_status
 
-from player import Player
-from enemy_spawner import EnemySpawner
-from enemy import Enemy
+from menu import Menu
 
 SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
@@ -20,8 +18,7 @@ screen = pygame.display.set_mode(SIZE)
 
 loop = True
 
-add_game_object(Player())
-add_game_object(EnemySpawner())
+add_game_object(Menu())
 
 # game loop
 while loop:

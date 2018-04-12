@@ -4,6 +4,8 @@ from bases.renderers.image_renderer import ImageRenderer
 
 from bases.physics.box_collider import BoxCollider
 
+from score import Score
+
 from utils import load_image
 from enemy import Enemy
 
@@ -27,5 +29,6 @@ class PlayerBullet(GameObject):
     def hitEnemy(self):
         enemy_to_hit = collide_with(self.box_collider, Enemy)
         if enemy_to_hit:
+            Score.value += 1
             enemy_to_hit.active = False
             self.active = False

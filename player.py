@@ -14,6 +14,7 @@ class Player(GameObject):
     def __init__(self):
         GameObject.__init__(self)
         self.renderer = ImageRenderer(load_image("player.png"))
+        self.position.copy(SCREEN_WIDTH / 2, SCREEN_HEIGHT  - 100)
         self.velocity = Vector2D(0, 0)
         self.shoot_counter = Counter(7)
         self.box_collider = BoxCollider(64, 64)

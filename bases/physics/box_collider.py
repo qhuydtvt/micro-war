@@ -1,12 +1,15 @@
 from bases.vector2d import Vector2D
 from bases.game_objects import GameObject
 
+from bases.physics.configs import SHOW_BOX_COLLIDER
+
 from bases.renderers.rect_renderer import RectRenderer
 
 class BoxCollider(GameObject):
     def __init__(self, width, height):
         GameObject.__init__(self)
-        self.renderer = RectRenderer(width, height)
+        if SHOW_BOX_COLLIDER:
+            self.renderer = RectRenderer(width, height)
         self.width = width
         self.height = height
     
