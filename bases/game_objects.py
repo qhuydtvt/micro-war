@@ -41,6 +41,15 @@ def recycle(request_type):
   add_game_object(new_object)
   return new_object
 
+def collide_with(box_collider, object_type):
+  for game_object in all_game_objects:
+    if game_object.active and \
+      type(game_object) == object_type and \
+      game_object.box_collider and \
+      game_object.box_collider.collide_with(box_collider):
+      return game_object
+  return None
+
 def draw_all(screen):
   for game_object in all_game_objects:
     if game_object.active:
