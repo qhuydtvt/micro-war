@@ -5,13 +5,17 @@ class GameObject:
     self.renderer = None
     self.position = Vector2D(0, 0)
     self.active = True
+    self.box_collider = None
 
   def draw(self, screen):
     if self.renderer:
         self.renderer.draw(screen, self.position)
+    if self.box_collider:
+      self.box_collider.draw(screen)
   
   def run(self):
-      pass
+      if self.box_collider:
+        self.box_collider.position.copy2(self.position)
 
 all_game_objects = []
 

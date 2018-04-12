@@ -5,8 +5,10 @@ from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 from utils import load_image
 from bases.game_objects import run_all, draw_all, add_game_object, game_object_count
 from input_manager import process_event, get_input_status
-from player import Player
 
+from player import Player
+from enemy_spawner import EnemySpawner
+from enemy import Enemy
 
 SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
@@ -18,8 +20,8 @@ screen = pygame.display.set_mode(SIZE)
 
 loop = True
 
-player = Player()
-add_game_object(player)
+add_game_object(Player())
+add_game_object(EnemySpawner())
 
 # game loop
 while loop:

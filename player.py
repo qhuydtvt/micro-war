@@ -5,6 +5,7 @@ from input_manager import get_input_status
 from bases.vector2d import Vector2D
 from player_bullet import PlayerBullet
 from bases.counter import Counter
+from bases.physics.box_collider import BoxCollider
 
 from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 from bases.mathx import clamp
@@ -15,6 +16,7 @@ class Player(GameObject):
         self.renderer = ImageRenderer(load_image("player.png"))
         self.velocity = Vector2D(0, 0)
         self.shoot_counter = Counter(7)
+        self.box_collider = BoxCollider(64, 64)
     
     def run(self):
         GameObject.run(self)
